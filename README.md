@@ -80,3 +80,56 @@ sudo docker-compose down
 
 The docker-compose setup comes with two pre-built dashboards. One for listing the discrete test runs as a list, and the other for visualizing the results of a specific test run.
 
+
+## Add data from the ESP32 to the Database
+This might be the way to connect the Acraea to the database (not testet yet)
+This example also needs to be  adapted to the actual table format.
+For now see create_database.py...
+
+```
+#include <WiFi.h>
+#include <SimplePgSQL.h>
+
+// WiFi credentials
+const char* ssid = "your_SSID";
+const char* password = "your_PASSWORD";
+
+// Database credentials
+const char* host = "your_DB_HOST";
+const char* user = "your_DB_USER";
+const char* pass = "your_DB_PASS";
+const char* db = "your_DB_NAME";
+
+// Initialize SimplePgSQL
+PGconnection pg(WiFiClient);
+
+void setup() {
+ // Connect to Wi-Fi
+ WiFi.begin(ssid, password);
+ while (WiFi.status() != WL_CONNECTED) {
+   delay(1000);
+ }
+
+ // Connect to PostgreSQL
+ int status = pg.setDbLogin(host, user, pass, db);
+ if (status != CONNECTION_OK) {
+   Serial.println("Connection to PostgreSQL failed.");
+   return;
+ }
+}
+
+void loop() {
+ // Read sensor data
+ float sensorValue = analogRead(A0);
+
+ // Insert sensor data into database
+ char query[64];
+ sprintf(query, "INSERT INTO sensor_data (value) VALUES (%f)", sensorValue);
+ int status = pg.execute(query);
+ if (status != 0) {
+   Serial.println("Failed to insert data into database.");
+ }
+
+ delay(1000);
+}
+```
