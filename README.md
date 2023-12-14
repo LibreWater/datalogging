@@ -49,7 +49,7 @@ sudo docker run hello-world
 ### Clone repo locally
 switch to desired location and type:
 ```
-git clone <repo address>
+git clone git@github.com:LibreWater/datalogging.git
 ```
 
 ## Configuration
