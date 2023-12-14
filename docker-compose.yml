@@ -14,7 +14,7 @@ services:
       - grafana
       - timescaledb
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - PGDATA=/var/lib/postgresql/data/timescaledb
       - POSTGRES_DB=acraea_db
@@ -35,3 +35,8 @@ services:
     volumes:
       - ./grafana:/etc/grafana/provisioning/
       - grafana-storage:/var/lib/grafana
+
+volumes:
+  timescaledb-data:
+  grafana-storage:
+
