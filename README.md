@@ -11,7 +11,7 @@ sudo apt-get update
 sudo apt-get install python3 #or whatever version you like
 ```
 
-### Dependency for database creation
+### Dependency for table creation
 ```
 pip3 install psycopg2
 ```
@@ -27,7 +27,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-##### Add the repository to Apt sources:
+#### Add the repository to Apt sources:
 ```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
@@ -54,7 +54,8 @@ git clone git@github.com:LibreWater/datalogging.git
 
 ## Configuration
 
-Depending on future sensor readings we'd need to update the database creation script (create_database.py)
+Depending on future sensor readings we'd need to update the table creation script (create_table.py)
+But maybe the table creation an altering (like adding more values) can also be done directly from the esp32
 
 ## Docker Compose
 
@@ -62,7 +63,7 @@ Navigate to cloned repo
 
 ```
 sudo docker-compose up -d
-python ./create_database.py
+python ./create_table.py
 ```
 
 Visit http://localhost:3000/ to view results in Grafana.
@@ -73,6 +74,8 @@ sudo docker-compose down
 ```
 
 ## Uninstall / reset
+Warning: Deletes all data from Database
+
 ```
 ./reset_docker.sh
 ```
@@ -83,8 +86,8 @@ The docker-compose setup comes with two pre-built dashboards. One for listing th
 
 ## Add data from the ESP32 to the Database
 This might be the way to connect the Acraea to the database (not testet yet)
-This example also needs to be  adapted to the actual table format.
-For now see create_database.py...
+This example also needs to be adapted to the actual table format.
+For now see create_table.py...
 
 ```
 #include <WiFi.h>
