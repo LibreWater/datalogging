@@ -1,0 +1,69 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "version": "latest",
+            "enableNonRootDocker": "true",
+            "moby": "true"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12"
+        },
+        "ghcr.io/devcontainers/features/terraform:1": {
+            "version": "1.3.0",
+            "installTFsec": true
+        },
+        "ghcr.io/devcontainers-contrib/features/zsh-plugins": {
+            "omzPlugins": [
+                "https://github.com/zsh-users/zsh-autosuggestions",
+                "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+            ]
+        },
+        "ghcr.io/devcontainers-contrib/features/tfswitch:1": {
+            "version": "1.0.9"
+        },
+        "ghcr.io/devcontainers-contrib/features/yamllint:2": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+				"EditorConfig.EditorConfig",
+				"GitHub.copilot",
+				"GitHub.vscode-github-actions",
+				"hashicorp.terraform",
+				"ms-azuretools.vscode-docker",
+				"ms-python.black-formatter",
+				"ms-python.python",
+				"oderwat.indent-rainbow",
+				"redhat.vscode-yaml",
+				"samuelcolvin.jinjahtml",
+				"timonwong.shellcheck",
+				"wholroyd.jinja",
+				"github.vscode-github-actions",
+				"tamasfe.even-better-toml",
+				"DavidAnson.vscode-markdownlint",
+				"charliermarsh.ruff",
+				"donjayamanne.git-extension-pack"
+			],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "prettier.requireConfig": true,
+                "editor.formatOnSave": true,
+                "asciidoc.extensions.enableKroki": true,
+                "checkov.frameworks": "all",
+                "shellcheck.customArgs": ["-x"]
+            }
+        }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.aws,target=/home/codespace/.aws,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.terraformrc,target=/home/codespace/.terraformrc,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.terraform.d,target=/home/codespace/.terraform.d,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.terraform.versions,target=/home/codespace/.terraform.versions,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/.devcontainer/.zshrc,target=/home/codespace/.zshrc,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/.devcontainer/post-create.sh,target=/home/codespace/post-create.sh,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder}/.devcontainer/post-start.sh,target=/home/codespace/post-start.sh,type=bind,consistency=cached"
+    ],
+    "postCreateCommand": "chmod +x /home/codespace/post-create.sh && /home/codespace/post-create.sh",
+    "postStartCommand": "chmod +x /home/codespace/post-start.sh && /home/codespace/post-start.sh"
+}
