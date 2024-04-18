@@ -1,3 +1,8 @@
+from django.contrib import admin
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+#from myapp import views
+from myapp.views import RunViewSet, RunDataViewSet
 """
 URL configuration for backend project.
 
@@ -14,9 +19,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+
+router = DefaultRouter()
+router.register(r'runs', RunViewSet)
+router.register(r'run_data', RunDataViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('myapp/', include('myapp.urls', namespace='myapp')),
 ]

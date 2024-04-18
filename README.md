@@ -11,9 +11,9 @@ sudo apt-get update
 sudo apt-get install python3 #or whatever version you like
 ```
 
-### Dependency for table creation
+### Dependencies
 ```
-pip3 install psycopg2 django
+pip3 install psycopg2 django djangorestframework
 ```
 
 ### Install Docker
