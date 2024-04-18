@@ -9,7 +9,7 @@ services:
     image: timescale/timescaledb:latest-pg15
     volumes:
       - timescaledb-data:/var/lib/postgresql/data
-    command: postgres -c shared_preload_libraries=timescaledb
+    command: postgres -c shared_preload_libraries=timescaledb -c log_min_messages=debug1 -c log_connections=on -c log_disconnections=on -c log_duration=on -c log_statement=all
     networks:
       - grafana
       - timescaledb
@@ -20,6 +20,7 @@ services:
       - POSTGRES_DB=acraea_db
       - POSTGRES_USER=acraea
       - POSTGRES_PASSWORD=turtle_power
+
 
   grafana:
     image: grafana/grafana:10.0.2

@@ -13,7 +13,7 @@ sudo apt-get install python3 #or whatever version you like
 
 ### Dependency for table creation
 ```
-pip3 install psycopg2
+pip3 install psycopg2 django
 ```
 
 ### Install Docker
