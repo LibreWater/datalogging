@@ -14,7 +14,7 @@ class RunData(models.Model):
     temperature = models.FloatField()
     humidity = models.FloatField()
     water_level = models.FloatField()
-    time_stamp = models.DateTimeField()
+    time_stamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"Data for Run {self.run.id} at {self.time_stamp}"
