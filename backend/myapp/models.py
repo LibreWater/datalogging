@@ -15,6 +15,10 @@ class RunData(models.Model):
     humidity = models.FloatField()
     water_level = models.FloatField()
     time_stamp = models.DateTimeField(auto_now_add=True)
+    kp = models.FloatField(default=0)
+    ki = models.FloatField(default=0)
+    kd = models.FloatField(default=0)
+    output = models.FloatField(default=0)
 
     def __str__(self):
         return f"Data for Run {self.run.id} at {self.time_stamp}"
