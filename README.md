@@ -75,10 +75,6 @@ or
 git clone git@github.com:LibreWater/datalogging.git
 ```
 
-## Configuration
-
-Depending on future sensor readings we'd need to update the table creation script (create_table.py)
-But maybe the table creation an altering (like adding more values) can also be done directly from the esp32
 
 ## Docker Compose
 
@@ -107,7 +103,7 @@ python3 manage.py runserver 0.0.0.0:8000
 
 
 ### configure UFW
-if you use a Firewall like UFW, you can configure it to give the ESP32 access to the backend.
+If you use the firewall UFW, you can configure it to give the ESP32 access to the backend.
 ```
 sudo ufw allow from 192.168.1.101 to any port 8000
 ```
@@ -122,3 +118,4 @@ Warning: Deletes all data from Database
 ## Dashboards
 
 The docker-compose setup comes with two pre-built dashboards. One for listing the discrete test runs as a list, and the other for visualizing the results of a specific test run.
+
