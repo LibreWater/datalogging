@@ -105,9 +105,9 @@ python3 manage.py runserver 0.0.0.0:8000
 ### configure UFW
 If you use the firewall UFW, you can configure it to give the ESP32 access to the backend.
 ```
-sudo ufw allow from 192.168.1.101 to any port 8000
+sudo ufw allow from 192.168.1.109 to any port 8000
 ```
-assuming 192.168.1.101 is the IP address of the ESP32.
+assuming 192.168.1.109 is the IP address of the ESP32.
 
 ## Uninstall / reset
 Warning: Deletes all data from Database
