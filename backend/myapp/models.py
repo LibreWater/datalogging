@@ -19,6 +19,7 @@ class RunData(models.Model):
     ki = models.FloatField(default=0)
     kd = models.FloatField(default=0)
     output = models.FloatField(default=0)
+    pump_on = models.FloatField(default=0)
 
     def __str__(self):
         return f"Data for Run {self.run.id} at {self.time_stamp}"

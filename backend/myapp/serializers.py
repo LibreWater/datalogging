@@ -9,4 +9,4 @@ class RunSerializer(serializers.ModelSerializer):
 class RunDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = RunData
-        fields = ['id', 'run', 'temperature', 'humidity', 'water_level', 'time_stamp', 'kp', 'ki', 'kd', 'output']
+        fields = ['id', 'run', 'temperature', 'humidity', 'water_level', 'time_stamp', 'kp', 'ki', 'kd', 'output', 'pump_on']
