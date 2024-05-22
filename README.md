@@ -109,6 +109,11 @@ sudo ufw allow from 192.168.1.109 to any port 8000
 ```
 assuming 192.168.1.109 is the IP address of the ESP32.
 
+## initialize database
+```
+python3 ./create_table.py
+```
+
 ## Uninstall / reset
 Warning: Deletes all data from Database
 
